@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Control Robot UR</title>
+<style>
+body {
+font-family: Arial;
+text-align: center;
+margin-top: 60px;
+}
+button {
+font-size: 20px;
+padding: 20px 40px;
+margin: 20px;
+cursor: pointer;
+}
+.move {
+background-color: #4CAF50;
+color: white;
+}
+.stop {
+background-color: #f44336;
+color: white;
+}
+</style>
+</head>
+<body>
+
+
+<h1>🤖 Control Web – URSim</h1>
+
+
+<form action="/move">
+<button class="move">▶️ Mover robot</button>
+</form>
+
+
+<form action="/stop">
+<button class="stop">⏹ Parar robot</button>
+</form>
+
+
+<form action="/disconnect">
+<button>🔌 Desconectar</button>
+</form>
+
+</body>
+</html>
