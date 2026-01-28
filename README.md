@@ -1,4 +1,27 @@
-# Imagen oficial URSim con VNC y noVNC
+# Wep App para controlar URSim
+
+Proyecto educativo para el control de robots UR (Universal Robots) mediante una **aplicación web**. Permite mover y parar el robot de forma sencilla desde un navegador, usando Python y Flask, y simulando el robot con **URSim** en Docker.
+
+
+
+## 🧰 Entorno
+
+
+- **Simulador de robot:** URSim e-Series dentro de Docker
+- **Lenguaje de programación:** Python 3.x
+- **Framework web:** Flask
+- **Control del robot:** librería `urx` para URScript/RTDE
+- **GUI del robot:** accesible vía VNC o noVNC
+- **Sistema operativo:** Compatible con Windows, Linux y MacOS (Docker requerido)
+
+
+## ⚙️ Características
+
+
+- Mover el brazo a posiciones predefinidas
+- Parar el robot inmediatamente
+- Interfaz web sencilla y responsive
+- Persistencia de datos opcional mediante volúmenes Docker
 
 ## 📥 Descargar la imagen
 
@@ -43,7 +66,7 @@ Accede a la interfaz web de la app
 http://localhost:5000/
 
 
-> [!WARNING] 
+**⚠️ ADVERTENCIA:** Asegúrate de pulsar "Play" en URSim antes de ejecutar el script Python, de lo contrario el robot no se moverá.
 
 Antes de poder probar la app debes entrar a la GUI del simulador y arrancar el robot 
 Pulsando el boton START dos veces.
@@ -53,9 +76,7 @@ Pulsando el boton START dos veces.
 
 
 
-> [!TIP]
-
-## 💾 Persistir programas y cambios
+💡 **TIP:** Persistir programas y cambios
 
 Si quieres que los programas que crees en el simulador se guarden fuera del contenedor, monta un volumen:
 Así los archivos de tu robot se quedan en tu carpeta local.
