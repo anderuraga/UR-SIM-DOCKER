@@ -34,7 +34,7 @@ docker pull universalrobots/ursim_e-series
 Esto descargará la versión más reciente de la imagen con URSim ya configurado.
 
 
-Ejecuta el contenedor con puertos para VNC y noVNC:
+Ejecuta el contenedor con puertos necearios:
 
 ```
 docker run --rm -it -e ROBOT_MODEL=UR3 -p 5900:5900 -p 6080:6080 -p 30002:30002 -p 30003:30003 -p 30004:30004 universalrobots/ursim_e-series
@@ -56,16 +56,6 @@ Abre tu navegador y ve a:
 http://localhost:6080/vnc.html
 
 
-
-
-## 🚀 Ejecuta la AppWeb 
-
-Ejecuta desde VSCode o comando el fichero app.py
-Accede a la interfaz web de la app
-
-http://localhost:5000/
-
-
 **⚠️ ADVERTENCIA:** Asegúrate de pulsar "Play" en URSim antes de ejecutar el script Python, de lo contrario el robot no se moverá.
 
 Antes de poder probar la app debes entrar a la GUI del simulador y arrancar el robot 
@@ -74,6 +64,12 @@ Pulsando el boton START dos veces.
 
 
 
+## 🚀 Ejecuta la AppWeb 
+
+Ejecuta desde VSCode o comando el fichero app.py
+Accede a la interfaz web de la app
+
+http://localhost:5000/
 
 
 💡 **TIP:** Persistir programas y cambios
