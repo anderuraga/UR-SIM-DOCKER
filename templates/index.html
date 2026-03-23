@@ -45,5 +45,68 @@ color: white;
 <button>🔌 Desconectar</button>
 </form>
 
+
+    <style>
+        body { font-family: Arial, sans-serif; }
+        button { padding: 10px 20px; margin: 5px; font-size: 16px; }
+        .red { background-color: red; color: white; }
+        #status { font-weight: bold; font-size: 18px; margin-top: 10px; }
+        #moving { font-weight: bold; font-size: 16px; margin-top: 5px; }
+    </style>
+    <script>
+        async function updateStatus() {
+            try {
+                let response = await fetch("/status");
+                let data = await response.json();
+                let stateElem = document.getElementById("status");
+                stateElem.innerText = data.state;
+                stateElem.style.color = data.state.includes("listo") ? "green" : "red";
+
+                let movingElem = document.getElementById("moving");
+                movingElem.innerText = data.moving ? "Secuencia en ejecución..." : "";
+            } catch (err) {
+                document.getElementById("status").innerText = "Error al obtener estado";
+                document.getElementById("status").style.color = "red";
+            }
+        }
+
+        setInterval(updateStatus, 1000);
+
+        async function startRobot() {
+            await fetch("/start", {method:"POST"});
+        }
+
+        async function stopRobot() {
+            await fetch("/stop", {method:"POST"});
+        }
+    </script>
+
+
+<script>
+function actualizarPosicion() {
+    fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+            let joints = data.joints;
+            let texto = "Posición: " + joints.map(j => j.toFixed(2)).join(", ");
+            document.getElementById("position").innerText = texto;
+        })
+        .catch(error => {
+            document.getElementById("position").innerText = "Error obteniendo posición";
+        });
+}
+
+// Actualiza cada 1 segundo
+setInterval(actualizarPosicion, 1000);
+
+// Primera llamada inmediata
+actualizarPosicion();
+</script>
+
+
+    <div id="status">Cargando estado...</div>
+    <div id="moving"></div>
+    <div id="position">Posición: --</div>
+
 </body>
 </html>
